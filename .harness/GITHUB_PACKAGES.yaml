@@ -1,0 +1,21 @@
+service:
+  name: GITHUB_PACKAGES
+  identifier: GITHUB_PACKAGES
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - identifier: GITHUB_PACKAGES_SOURCE
+              spec:
+                connectorRef: GITHUB_CONNECTOR
+                packageName: helloworld
+                packageType: container
+                version: <+input>
+                org: ""
+              type: GithubPackageRegistry
+  gitOpsEnabled: false
+  orgIdentifier: default
+  projectIdentifier: VT_Tests
