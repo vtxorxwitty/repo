@@ -1,0 +1,6 @@
+environment:
+  name: acc env remote
+  identifier: acc_env_remote
+  description: ""
+  tags: {}
+  type: Production
