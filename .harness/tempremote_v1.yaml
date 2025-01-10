@@ -16,11 +16,11 @@ template:
           spec:
             deploymentType: Kubernetes
             environment:
-              environmentRef: <+input>
+              environmentRef: envrem
+              gitBranch: master
               deployToAll: false
-              environmentInputs: <+input>
-              serviceOverrideInputs: <+input>
-              infrastructureDefinitions: <+input>
+              infrastructureDefinitions:
+                - identifier: infraremote
             service:
               serviceRef: <+input>
               serviceInputs: <+input>
