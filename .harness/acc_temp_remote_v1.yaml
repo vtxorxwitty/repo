@@ -1,0 +1,48 @@
+template:
+  name: acc temp remote
+  identifier: acc_temp_remote
+  versionLabel: v1
+  type: Pipeline
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: s1
+          identifier: s1
+          description: ""
+          type: Deployment
+          spec:
+            deploymentType: Kubernetes
+            environment:
+              environmentRef: account.acc_env_remote
+              gitBranch: master
+              deployToAll: false
+              infrastructureDefinitions:
+                - identifier: acc_infra_remote
+            service:
+              serviceRef: <+input>
+              serviceInputs: <+input>
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo hi
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+              rollbackSteps: []
+          tags: {}
+          failureStrategies:
+            - onFailure:
+                errors:
+                  - AllErrors
+                action:
+                  type: StageRollback
