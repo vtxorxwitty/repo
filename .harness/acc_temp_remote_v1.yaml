@@ -15,6 +15,7 @@ template:
             deploymentType: Kubernetes
             environment:
               environmentRef: account.acc_env_remote
+              gitBranch: master
               deployToAll: false
               infrastructureDefinitions:
                 - identifier: acc_infra_remote
