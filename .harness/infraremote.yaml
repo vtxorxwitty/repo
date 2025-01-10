@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: infra-remote
+  identifier: infraremote
+  orgIdentifier: default
+  projectIdentifier: V
+  environmentRef: envrem
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: KUBERENETES_CONNECTOR
+    namespace: default
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
